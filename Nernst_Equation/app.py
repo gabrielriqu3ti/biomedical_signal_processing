@@ -2,7 +2,7 @@
 """
 Created on Tue Apr 20 15:01:58 2021
 
-@author: gabri
+@author: Gabriel H Riqueti
 """
 
 from PyQt5 import QtWidgets

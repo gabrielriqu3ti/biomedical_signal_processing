@@ -16,3 +16,29 @@ where:
 - [ion]in   = concentration of the ion inside the cell
 
 The **equilibrium potential** is the electrical potential difference that exactly balances an **ionic concentration gradient**.
+
+## Tools
+
+#### The ionic equilibrium for a human neuron
+
+The equilibrium potential and the ionic concentration of ions in a human neuron are displayed by running the following code:
+
+```
+python human_neuron_equilibrium.py
+```
+
+#### App
+
+To calculate the equilibrium potential of an ion for a specific setting, run:
+
+```
+python app.py
+```
+
+#### The ionic equilibrium for an exercise of the course PTC3456
+
+The equilibrium potential and the ionic concentration of ions in the exercise are displayed by running the following code:
+
+```
+python ex_nernst_equation.py
+```

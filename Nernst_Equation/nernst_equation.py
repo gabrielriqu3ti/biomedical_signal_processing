@@ -2,7 +2,7 @@
 """
 Created on Tue Apr 20 14:17:16 2021
 
-@author: gabri
+@author: Gabriel H Riqueti
 """
 
 from constant import FARADAYS_CONSTANT as F

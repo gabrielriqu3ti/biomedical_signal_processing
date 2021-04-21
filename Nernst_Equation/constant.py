@@ -2,7 +2,7 @@
 """
 Created on Tue Apr 20 14:09:51 2021
 
-@author: gabri
+@author: Gabriel H Riqueti
 """
 
 FARADAYS_CONSTANT = 96485.3329   # (C / mol)

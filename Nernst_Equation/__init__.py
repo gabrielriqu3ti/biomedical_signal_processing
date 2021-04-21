@@ -2,7 +2,7 @@
 """
 Created on Tue Apr 20 14:59:39 2021
 
-@author: gabri
+@author: Gabriel H Riqueti
 """
 
 from .constant import *
