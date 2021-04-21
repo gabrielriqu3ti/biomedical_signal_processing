@@ -9,7 +9,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
 import sys
 
-from nerst_equation import Nerst_equation
+from nernst_equation import Nernst_equation
 from constant import ABSOLUTE_TEMPERATURE_CELSIUS as T0
 
 
@@ -72,7 +72,7 @@ class NerstEquationWidget(QtWidgets.QWidget):
             QtWidgets.QMessageBox.about(self, 'Error Message', error_msg)
             return -1
 
-        equilibrium_potential = 1000 * Nerst_equation(temperature - T0, valence, ion_in, ion_out)
+        equilibrium_potential = 1000 * Nernst_equation(temperature - T0, valence, ion_in, ion_out)
 
         self.label_potential_value.setText(str(equilibrium_potential) + ' mV')
 

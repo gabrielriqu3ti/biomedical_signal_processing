@@ -13,7 +13,7 @@ import numpy as np
 
 
 @np.vectorize
-def Nerst_equation(temperature, valence, ion_in, ion_out):
+def Nernst_equation(temperature, valence, ion_in, ion_out):
     """
     Calculate the equilibrium potential for a specific ion
     
@@ -29,11 +29,11 @@ def Nerst_equation(temperature, valence, ion_in, ion_out):
     e_ion        : Ionic equilibrium potential
         
     """
-    
+
     if ion_in <= 0 or ion_out <= 0:
         raise ValueError('I_in and I_out must have positive values')
     if valence == 0:
-        return 0 * temperature * math.log(ion_in / ion_out)
+        return 0 * valence * temperature * ion_in * ion_out
 
-    return (R * temperature / (valence * F)) * math.log(ion_in / ion_out)
+    return (R * temperature / (valence * F)) * math.log(ion_out / ion_in)
 
