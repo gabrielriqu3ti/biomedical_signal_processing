@@ -2,7 +2,7 @@
 
 The **Nernst Equation** allows us to calculate the equilibrium potential for a given ion separated by a phospholipid membrane with ion channels selectively permeable to that ion and is given by:
 
-E_ion = ((RT)/(zF)) ln([ion]out / [ion]in)
+<img src="https://render.githubusercontent.com/render/math?math=E_{ion} = \frac{RT}{zF} \ln{\frac{[ion]_{out}}{[ion]_{in}}}">
 
 where:
 
