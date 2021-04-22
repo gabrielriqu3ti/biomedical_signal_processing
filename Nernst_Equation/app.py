@@ -13,7 +13,7 @@ from nernst_equation import Nernst_equation
 from constant import ABSOLUTE_TEMPERATURE_CELSIUS as T0
 
 
-class NerstEquationWidget(QtWidgets.QWidget):
+class NernstEquationWidget(QtWidgets.QWidget):
 
     def __init__(self):
         super().__init__()
@@ -36,7 +36,7 @@ class NerstEquationWidget(QtWidgets.QWidget):
 
         self.UI()
 
-    def calculate_resting_potential(self):
+    def calculate_equilibrium_potential(self):
         try:
             ion_in = float(self.line_ion_in.text())
             if ion_in <= 0:
@@ -78,7 +78,7 @@ class NerstEquationWidget(QtWidgets.QWidget):
 
     def UI(self):
         self.button.setText('Calculate')
-        self.button.clicked.connect(self.calculate_resting_potential)
+        self.button.clicked.connect(self.calculate_equilibrium_potential)
 
         self.grid.addWidget(self.label_ion_in, 0, 0)
         self.grid.addWidget(self.line_ion_in, 1, 0)
@@ -94,14 +94,14 @@ class NerstEquationWidget(QtWidgets.QWidget):
 
         self.setLayout(self.grid)
         self.setGeometry(400, 300, 350, 200)
-        self.setWindowTitle('Nerst Equation')
+        self.setWindowTitle('Nernst Equation')
 
         self.show()
 
 
 def main():
     app = QApplication(sys.argv)
-    win = NerstEquationWidget()
+    win = NernstEquationWidget()
 
     win.show()
     sys.exit(app.exec_())
