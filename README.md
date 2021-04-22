@@ -13,6 +13,8 @@ The **Nernst Equation** allows us to calculate the equilibrium potential for a g
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;E_{ion} = \frac{RT}{zF} \ln{\frac{[ion]_{out}}{[ion]_{in}}}" title="\Large E_{ion} = \frac{RT}{zF} \ln{\frac{[ion]_{out}}{[ion]_{in}}}" />
 
+<img src="https://latex.codecogs.com/svg.image?\inline&space;E_{ion}&space;=&space;\frac{RT}{zF}&space;\ln{\frac{[ion]_{out}}{[ion]_{in}}}" title="\inline E_{ion} = \frac{RT}{zF} \ln{\frac{[ion]_{out}}{[ion]_{in}}}" />
+
 where:
 
 - E_ion     = ionic equilibrium potential
@@ -59,6 +61,8 @@ The **Goldman Equation** allows us to calculate the resting membrane potential f
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;E_{R} = \frac{RT}{F} \ln{\frac{\sum{P_{cation_i} [cation]_{out_i}} + \sum{P_{anion_i} [anion]_{in_i}}}{\sum{P_{cation_i} [cation]_{in_i}} + \sum{P_{anion_i} [anion]_{out_i}}}}" title="\Large E_{R} = \frac{RT}{F} \ln{\frac{\sum{P_{cation_i} [cation]_{out_i}} + \sum{P_{anion_i} [anion]_{in_i}}}{\sum{P_{cation_i} [cation]_{in_i}} + \sum{P_{anion_i} [anion]_{out_i}}}}" />
 ![\Large E_{R} = \frac{RT}{F} \ln{\frac{\sum{P_{cation_i} [cation]_{out_i}} + \sum{P_{anion_i} [anion]_{in_i}}}{\sum{P_{cation_i} [cation]_{in_i}} + \sum{P_{anion_i} [anion]_{out_i}}}}](https://latex.codecogs.com/svg.latex?x%3D%5Cfrac%7B-b%5Cpm%5Csqrt%7Bb%5E2-4ac%7D%7D%7B2a%7D)
 where:
+
+<img src="https://latex.codecogs.com/svg.image?\inline&space;E_{R}&space;=&space;\frac{RT}{F}&space;\ln{\frac{\sum{P_{cation_i}&space;[cation]_{out_i}}&space;&plus;&space;\sum{P_{anion_i}&space;[anion]_{in_i}}}{\sum{P_{cation_i}&space;[cation]_{in_i}}&space;&plus;&space;\sum{P_{anion_i}&space;[anion]_{out_i}}}}" title="\inline E_{R} = \frac{RT}{F} \ln{\frac{\sum{P_{cation_i} [cation]_{out_i}} + \sum{P_{anion_i} [anion]_{in_i}}}{\sum{P_{cation_i} [cation]_{in_i}} + \sum{P_{anion_i} [anion]_{out_i}}}}" />
 
 - E_ion     = ionic equilibrium potential
 - R         = gas constant
