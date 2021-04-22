@@ -5,8 +5,8 @@ Created on Tue Apr 22 14:17:16 2021
 @author: Gabriel H Riqueti
 """
 
-from constant import FARADAYS_CONSTANT as F
-from constant import GAS_CONSTANT as R
+from biomedical_signal_processing import FARADAYS_CONSTANT as F
+from biomedical_signal_processing import GAS_CONSTANT as R
 
 import numpy as np
 

@@ -1,6 +1,0 @@
-README.md
-setup.py
-Biomedical_Signal_Processing.egg-info/PKG-INFO
-Biomedical_Signal_Processing.egg-info/SOURCES.txt
-Biomedical_Signal_Processing.egg-info/dependency_links.txt
-Biomedical_Signal_Processing.egg-info/top_level.txt

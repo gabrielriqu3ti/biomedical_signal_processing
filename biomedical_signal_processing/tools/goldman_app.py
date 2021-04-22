@@ -10,8 +10,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 import sys
 import numpy as np
 
-from constant import ABSOLUTE_TEMPERATURE_CELSIUS as T0
-from goldman_equation import Goldman_equation
+from biomedical_signal_processing import ABSOLUTE_TEMPERATURE_CELSIUS as T0
+from biomedical_signal_processing import Goldman_equation
 
 
 class GoldmanEquationWidget(QtWidgets.QWidget):

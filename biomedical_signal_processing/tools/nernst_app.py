@@ -9,8 +9,8 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
 import sys
 
-from nernst_equation import Nernst_equation
-from constant import ABSOLUTE_TEMPERATURE_CELSIUS as T0
+from biomedical_signal_processing import ABSOLUTE_TEMPERATURE_CELSIUS as T0
+from biomedical_signal_processing import Nernst_equation
 
 
 class NernstEquationWidget(QtWidgets.QWidget):
