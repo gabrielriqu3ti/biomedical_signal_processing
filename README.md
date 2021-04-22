@@ -11,7 +11,7 @@ The available projects are:
 
 The **Nernst Equation** allows us to calculate the equilibrium potential for a given ion separated by a phospholipid membrane with ion channels selectively permeable to that ion and is given by:
 
-<img src="https://render.githubusercontent.com/render/math?math=E_{ion} = \frac{RT}{zF} \ln{\frac{[ion]_{out}}{[ion]_{in}}}">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;E_{ion} = \frac{RT}{zF} \ln{\frac{[ion]_{out}}{[ion]_{in}}}" title="\Large E_{ion} = \frac{RT}{zF} \ln{\frac{[ion]_{out}}{[ion]_{in}}}" />
 
 where:
 
@@ -56,7 +56,7 @@ python ex_nernst_equation.py
 
 The **Goldman Equation** allows us to calculate the resting membrane potential for a given set of monovalent ions separated by a phospholipid membrane with ion channels selectively permeable to these ions and is given by:
 
-<img src="https://render.githubusercontent.com/render/math?math=E_{ion} = \frac{RT}{F} \ln{\frac{\sum{P_{cation_i} [cation]_{out_i}} + \sum{P_{anion_i} [anion]_{in_i}}}{\sum{P_{cation_i} [cation]_{in_i}} + \sum{P_{anion_i} [anion]_{out_i}}}}">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;E_{R} = \frac{RT}{F} \ln{\frac{\sum{P_{cation_i} [cation]_{out_i}} + \sum{P_{anion_i} [anion]_{in_i}}}{\sum{P_{cation_i} [cation]_{in_i}} + \sum{P_{anion_i} [anion]_{out_i}}}}" title="\Large E_{R} = \frac{RT}{F} \ln{\frac{\sum{P_{cation_i} [cation]_{out_i}} + \sum{P_{anion_i} [anion]_{in_i}}}{\sum{P_{cation_i} [cation]_{in_i}} + \sum{P_{anion_i} [anion]_{out_i}}}}" />
 
 where:
 
