@@ -4,8 +4,8 @@ This project encapsulates some small projects developed in the course [PTC3456 -
 
 The available projects are:
 
-- [Nernst Equation](https://github.com/gabrielriqu3ti/biomedical_signal_processing/#nernst_equation)
-- [Goldman Equation](https://github.com/gabrielriqu3ti/biomedical_signal_processing/#goldman_equation)
+- [Nernst Equation](https://github.com/gabrielriqu3ti/biomedical_signal_processing/wiki/Nernst-Equation)
+- [Goldman Equation](https://github.com/gabrielriqu3ti/biomedical_signal_processing/wiki/Goldman-Equation)
 
 ## Nernst Equation
 
