@@ -57,7 +57,7 @@ python ex_nernst_equation.py
 The **Goldman Equation** allows us to calculate the resting membrane potential for a given set of monovalent ions separated by a phospholipid membrane with ion channels selectively permeable to these ions and is given by:
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;E_{R} = \frac{RT}{F} \ln{\frac{\sum{P_{cation_i} [cation]_{out_i}} + \sum{P_{anion_i} [anion]_{in_i}}}{\sum{P_{cation_i} [cation]_{in_i}} + \sum{P_{anion_i} [anion]_{out_i}}}}" title="\Large E_{R} = \frac{RT}{F} \ln{\frac{\sum{P_{cation_i} [cation]_{out_i}} + \sum{P_{anion_i} [anion]_{in_i}}}{\sum{P_{cation_i} [cation]_{in_i}} + \sum{P_{anion_i} [anion]_{out_i}}}}" />
-
+![\Large E_{R} = \frac{RT}{F} \ln{\frac{\sum{P_{cation_i} [cation]_{out_i}} + \sum{P_{anion_i} [anion]_{in_i}}}{\sum{P_{cation_i} [cation]_{in_i}} + \sum{P_{anion_i} [anion]_{out_i}}}}](https://latex.codecogs.com/svg.latex?x%3D%5Cfrac%7B-b%5Cpm%5Csqrt%7Bb%5E2-4ac%7D%7D%7B2a%7D)
 where:
 
 - E_ion     = ionic equilibrium potential
