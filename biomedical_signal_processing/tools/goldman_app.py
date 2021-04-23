@@ -142,7 +142,7 @@ class GoldmanEquationWidget(QtWidgets.QWidget):
         self.grid.addWidget(self.label_potential_value, 7, 2)
 
         self.setLayout(self.grid)
-        self.setGeometry(400, 300, 350, 200)
+        self.setGeometry(400, 300, 600, 200)
         self.setWindowTitle('Goldman Equation')
 
         self.show()
