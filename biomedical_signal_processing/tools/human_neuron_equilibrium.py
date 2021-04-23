@@ -54,7 +54,7 @@ def main():
     print()
     print(df)
     print()
-    print(f'Resting membrane potential = {1000 * E_r} mV')
+    print(f'Resting membrane potential = {1000 * E_r:.3f} mV')
 
 
 if __name__ == '__main__':
