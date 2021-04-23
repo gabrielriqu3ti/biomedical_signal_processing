@@ -58,18 +58,18 @@ The **Goldman Equation** allows us to calculate the resting membrane potential f
 
 <img src="https://latex.codecogs.com/svg.image?\inline&space;E_{R}&space;=&space;\frac{RT}{F}&space;\ln{\frac{\sum{P_{cation_i}&space;[cation]_{out_i}}&space;&plus;&space;\sum{P_{anion_i}&space;[anion]_{in_i}}}{\sum{P_{cation_i}&space;[cation]_{in_i}}&space;&plus;&space;\sum{P_{anion_i}&space;[anion]_{out_i}}}}" title="\inline E_{R} = \frac{RT}{F} \ln{\frac{\sum{P_{cation_i} [cation]_{out_i}} + \sum{P_{anion_i} [anion]_{in_i}}}{\sum{P_{cation_i} [cation]_{in_i}} + \sum{P_{anion_i} [anion]_{out_i}}}}" />
 
-- E_ion     = ionic equilibrium potential
-- R         = gas constant
-- T         = absolute temperature
-- z         = charge of that ion
-- F         = Faraday's constant
-- ln        = natural logarithm
+- E_r          = resting membrane potential
+- R            = gas constant
+- T            = absolute temperature
+- z            = charge of that ion
+- F            = Faraday's constant
+- ln           = natural logarithm
 - [cation]out  = concentration of the monovalent cation outside the cell
 - [cation]in   = concentration of the monovalent cation inside the cell
-- P_cation   = relative permeability of the cell membrane to the monovalent cation in relation to an ion
-- [anion]out  = concentration of the monovalent anion outside the cell
-- [anion]in   = concentration of the monovalent anion inside the cell
-- P_anion   = relative permeability of the cell membrane to the monovalent anion in relation to an ion
+- P_cation     = relative permeability of the cell membrane to the monovalent cation in relation to an ion
+- [anion]out   = concentration of the monovalent anion outside the cell
+- [anion]in    = concentration of the monovalent anion inside the cell
+- P_anion      = relative permeability of the cell membrane to the monovalent anion in relation to an ion
 
 The **resting membrane potential** is the electrical potential difference across an membrane not conducting **action potentials**.
 

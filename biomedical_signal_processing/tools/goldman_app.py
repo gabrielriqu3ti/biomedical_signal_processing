@@ -30,7 +30,7 @@ class GoldmanEquationWidget(QtWidgets.QWidget):
         self.label_cloride_out = QtWidgets.QLabel('[Cl-]out (mM):')
         self.label_cloride_relative_permeability = QtWidgets.QLabel('P_Cl-:')
         self.label_temperature = QtWidgets.QLabel('Temperature (Celsius):')
-        self.label_potential = QtWidgets.QLabel('Equilibrium potential:')
+        self.label_potential = QtWidgets.QLabel('Resting potential:')
         self.label_potential_value = QtWidgets.QLabel()
 
         self.line_potassium_in = QtWidgets.QLineEdit()
@@ -44,13 +44,43 @@ class GoldmanEquationWidget(QtWidgets.QWidget):
         self.line_cloride_relative_permeability = QtWidgets.QLineEdit()
         self.line_temperature = QtWidgets.QLineEdit()
 
-        self.button = QtWidgets.QPushButton()
+        self.button_about = QtWidgets.QPushButton()
+        self.button_calculate = QtWidgets.QPushButton()
 
         self.grid = QtWidgets.QGridLayout()
 
         self.UI()
 
-    def calculate_resting_potential(self):
+    def _show_info(self):
+        message = '''Goldman Equation
+
+The Goldman Equation allows us to calculate the resting membrane potential for a given set of monovalent ions separated by a phospholipid membrane with ion channels selectively permeable to these ions and is given by:
+
+E_r = (R * T / F) * ln((P_K+ * [K+]out + P_Na+ * [Na+]out + P_Cl- * [Cl-]in) / (P_K+ * [K+]in + P_Na+ * [Na+]in + P_Cl- * [Cl-]out))
+
+- E_r = resting membrane potential
+- R = gas constant
+- T = absolute temperature
+- z = charge of that ion
+- F = Faraday's constant
+- ln = natural logarithm
+- [K+]out = concentration of potassium outside the cell
+- [Na+]out = concentration of sodium outside the cell
+- [Cl-]out = concentration of cloride outside the cell
+- [K+]in = concentration of potassium inside the cell
+- [Na+]in = concentration of sodium inside the cell
+- [Cl-]in = concentration of cloride inside the cell
+- P_K+ = relative permeability of the cell membrane to potassium in relation to potassium
+- P_Na+ = relative permeability of the cell membrane to sodium in relation to potassium
+- P_Cl- = relative permeability of the cell membrane to cloride in relation to potassium
+- P_anion = relative permeability of the cell membrane to the monovalent anion in relation to an ion
+
+The resting membrane potential is the electrical potential difference across an membrane not conducting action potentials.
+        '''
+
+        QtWidgets.QMessageBox.about(self, 'Information', message)
+
+    def _calculate_resting_potential(self):
         try:
             K_in = float(self.line_potassium_in.text())
             if K_in <= 0:
@@ -111,8 +141,11 @@ class GoldmanEquationWidget(QtWidgets.QWidget):
         self.label_potential_value.setText(str(resting_potential) + ' mV')
 
     def UI(self):
-        self.button.setText('Calculate')
-        self.button.clicked.connect(self.calculate_resting_potential)
+        self.button_about.setText('About')
+        self.button_about.clicked.connect(self._show_info)
+
+        self.button_calculate.setText('Calculate')
+        self.button_calculate.clicked.connect(self._calculate_resting_potential)
 
         self.grid.addWidget(self.label_potassium_in, 0, 0)
         self.grid.addWidget(self.line_potassium_in, 1, 0)
@@ -137,12 +170,15 @@ class GoldmanEquationWidget(QtWidgets.QWidget):
 
         self.grid.addWidget(self.label_temperature, 0, 3)
         self.grid.addWidget(self.line_temperature, 1, 3)
-        self.grid.addWidget(self.button, 6, 3)
-        self.grid.addWidget(self.label_potential, 7, 1)
-        self.grid.addWidget(self.label_potential_value, 7, 2)
+        self.grid.addWidget(QtWidgets.QLabel(''), 6, 3)
+        self.grid.addWidget(self.button_about, 7, 2)
+        self.grid.addWidget(self.button_calculate, 7, 3)
+        self.grid.addWidget(QtWidgets.QLabel(''), 8, 3)
+        self.grid.addWidget(self.label_potential, 9, 1)
+        self.grid.addWidget(self.label_potential_value, 9, 2)
 
         self.setLayout(self.grid)
-        self.setGeometry(400, 300, 600, 200)
+        self.setGeometry(400, 300, 700, 300)
         self.setWindowTitle('Goldman Equation')
 
         self.show()

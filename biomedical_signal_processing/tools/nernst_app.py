@@ -30,13 +30,37 @@ class NernstEquationWidget(QtWidgets.QWidget):
         self.line_valence = QtWidgets.QLineEdit()
         self.line_temperature = QtWidgets.QLineEdit()
 
-        self.button = QtWidgets.QPushButton()
+        self.button_calculate = QtWidgets.QPushButton()
+        self.button_about = QtWidgets.QPushButton()
 
         self.grid = QtWidgets.QGridLayout()
 
         self.UI()
+        
+    def _show_info(self):
+        message = '''Nernst Equation
+        
+The Nernst Equation allows us to calculate the equilibrium potential for a given ion separated by a phospholipid membrane with ion channels selectively permeable to that ion and is given by:
 
-    def calculate_equilibrium_potential(self):
+E_ion = (RT/(zF)) ln([ion]out / [ion]in)
+
+where:
+
+- E_ion = ionic equilibrium potential
+- R = gas constant
+- T = absolute temperature
+- z = charge of that ion
+- F = Faraday's constant
+- ln = natural logarithm
+- [ion]out = concentration of the ion outside the cell
+- [ion]in = concentration of the ion inside the cell
+
+The equilibrium potential is the electrical potential difference that exactly balances an ionic concentration gradient.
+        '''
+
+        QtWidgets.QMessageBox.about(self, 'Information', message)
+
+    def _calculate_equilibrium_potential(self):
         try:
             ion_in = float(self.line_ion_in.text())
             if ion_in <= 0:
@@ -77,8 +101,11 @@ class NernstEquationWidget(QtWidgets.QWidget):
         self.label_potential_value.setText(str(equilibrium_potential) + ' mV')
 
     def UI(self):
-        self.button.setText('Calculate')
-        self.button.clicked.connect(self.calculate_equilibrium_potential)
+        self.button_about.setText('About')
+        self.button_about.clicked.connect(self._show_info)
+
+        self.button_calculate.setText('Calculate')
+        self.button_calculate.clicked.connect(self._calculate_equilibrium_potential)
 
         self.grid.addWidget(self.label_ion_in, 0, 0)
         self.grid.addWidget(self.line_ion_in, 1, 0)
@@ -88,9 +115,12 @@ class NernstEquationWidget(QtWidgets.QWidget):
         self.grid.addWidget(self.line_temperature, 1, 1)
         self.grid.addWidget(self.label_valence, 2, 1)
         self.grid.addWidget(self.line_valence, 3, 1)
-        self.grid.addWidget(self.button, 4, 0)
-        self.grid.addWidget(self.label_potential, 5, 0)
-        self.grid.addWidget(self.label_potential_value, 5, 1)
+        self.grid.addWidget(QtWidgets.QLabel(''), 4, 0)
+        self.grid.addWidget(self.button_about, 5, 0)
+        self.grid.addWidget(self.button_calculate, 5, 1)
+        self.grid.addWidget(QtWidgets.QLabel(''), 6, 0)
+        self.grid.addWidget(self.label_potential, 7, 0)
+        self.grid.addWidget(self.label_potential_value, 7, 1)
 
         self.setLayout(self.grid)
         self.setGeometry(400, 300, 350, 200)
