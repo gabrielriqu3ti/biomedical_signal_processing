@@ -7,6 +7,13 @@ The available projects are:
 - [Nernst Equation](https://github.com/gabrielriqu3ti/biomedical_signal_processing/wiki/Nernst-Equation)
 - [Goldman Equation](https://github.com/gabrielriqu3ti/biomedical_signal_processing/wiki/Goldman-Equation)
 
+You can run an application of each project from the main application by running:
+
+```
+python main_app.py
+```
+
+
 ## Nernst Equation
 
 The **Nernst Equation** allows us to calculate the equilibrium potential for a given ion separated by a phospholipid membrane with ion channels selectively permeable to that ion and is given by:
@@ -26,7 +33,7 @@ where:
 
 The **equilibrium potential** is the electrical potential difference that exactly balances an **ionic concentration gradient**.
 
-## Tools
+### Tools
 
 #### The ionic equilibrium for a human neuron
 
@@ -73,7 +80,7 @@ The **Goldman Equation** allows us to calculate the resting membrane potential f
 
 The **resting membrane potential** is the electrical potential difference across an membrane not conducting **action potentials**.
 
-## Tools
+### Tools
 
 #### The resting potential for a human neuron
 
