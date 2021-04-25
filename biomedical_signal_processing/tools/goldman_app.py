@@ -5,8 +5,8 @@ Created on Tue Apr 20 15:01:58 2021
 @author: Gabriel H Riqueti
 """
 
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PySide2 import QtWidgets
+from PySide2.QtWidgets import QApplication
 import sys
 import numpy as np
 

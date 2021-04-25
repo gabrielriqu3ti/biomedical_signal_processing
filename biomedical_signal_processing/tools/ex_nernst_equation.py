@@ -5,8 +5,8 @@ Created on Tue Apr 20 14:09:51 2021
 @author: Gabriel H Riqueti
 """
 
-from constant import ABSOLUTE_TEMPERATURE_CELSIUS as T0
-from nernst_equation import Nernst_equation
+from biomedical_signal_processing import ABSOLUTE_TEMPERATURE_CELSIUS as T0
+from biomedical_signal_processing import Nernst_equation
 
 import pandas as pd
 
