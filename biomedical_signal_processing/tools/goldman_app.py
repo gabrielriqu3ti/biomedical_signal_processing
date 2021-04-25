@@ -188,6 +188,9 @@ def main():
     app = QApplication(sys.argv)
     win = GoldmanEquationWidget()
 
+    screen = app.primaryScreen()
+    win.move((screen.size().width() - win.width()) // 2, (screen.size().height() - win.height()) // 2)
+
     win.show()
     sys.exit(app.exec_())
 
