@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Apr 20 14:09:51 2021
-
-@author: Gabriel H Riqueti
-"""
+##
+# @file ex_nernst_equation.py
+# @author Gabriel H Riqueti
+# @email gabrielhriqueti@gmail.com
+# @date 20/04/2021
+# @brief Calculates the equilibrium potential for a given set of concentrations
+#
+# @details The equilibrium potentials are calculated for an excitable membrane at 25 Celsius with concentrations of
+#          potassium inside the cell of 400 mM, potassium outside the cell of 20 mM, sodium inside the cell of 50 mM,
+#          sodium outside the cell of 440 mM, cloride inside the cell of 52 mM and cloride outside the cell of 560 mM.
+#
 
 from biomedical_signal_processing import ABSOLUTE_TEMPERATURE_CELSIUS as T0
 from biomedical_signal_processing import Nernst_equation

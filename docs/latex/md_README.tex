@@ -1,0 +1,117 @@
+This project encapsulates some small projects developed in the course \href{https://uspdigital.usp.br/jupiterweb/obterDisciplina?nomdis=&sgldis=PTC3456}{\tt P\+T\+C3456 -\/ Biomedical Signals Processing}. Each on aims to give some elucidation and simulate the human body and its signals.
+
+The available projects are\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/gabrielriqu3ti/biomedical_signal_processing/wiki/Nernst-Equation}{\tt Nernst Equation}
+\item \href{https://github.com/gabrielriqu3ti/biomedical_signal_processing/wiki/Goldman-Equation}{\tt Goldman Equation}
+\end{DoxyItemize}
+
+You can run an application of each project from the main application by running\+:
+
+
+\begin{DoxyCode}
+python main\_app.py
+\end{DoxyCode}
+
+
+\subsection*{Nernst Equation}
+
+The {\bfseries Nernst Equation} allows us to calculate the equilibrium potential for a given ion separated by a phospholipid membrane with ion channels selectively permeable to that ion and is given by\+:
+
+
+
+where\+:
+
+
+\begin{DoxyItemize}
+\item E\+\_\+ion = ionic equilibrium potential
+\item R = gas constant
+\item T = absolute temperature
+\item z = charge of that ion
+\item F = Faraday\textquotesingle{}s constant
+\item ln = natural logarithm
+\item \mbox{[}ion\mbox{]}out = concentration of the ion outside the cell
+\item \mbox{[}ion\mbox{]}in = concentration of the ion inside the cell
+\end{DoxyItemize}
+
+The {\bfseries equilibrium potential} is the electrical potential difference that exactly balances an {\bfseries ionic concentration gradient}.
+
+\subsubsection*{Tools}
+
+\paragraph*{The ionic equilibrium for a human neuron}
+
+The equilibrium potential and the ionic concentration of ions in a human neuron are displayed by running the following code\+:
+
+
+\begin{DoxyCode}
+python human\_neuron\_equilibrium.py
+\end{DoxyCode}
+
+
+\paragraph*{App}
+
+To calculate the equilibrium potential of an ion for a specific setting, run\+:
+
+
+\begin{DoxyCode}
+python nernst\_app.py
+\end{DoxyCode}
+
+
+\paragraph*{The ionic equilibrium for an exercise of the course P\+T\+C3456}
+
+The equilibrium potential and the ionic concentration of ions in the exercise are displayed by running the following code\+:
+
+
+\begin{DoxyCode}
+python ex\_nernst\_equation.py
+\end{DoxyCode}
+
+
+\subsection*{Goldman Equation}
+
+The {\bfseries Goldman Equation} allows us to calculate the resting membrane potential for a given set of monovalent ions separated by a phospholipid membrane with ion channels selectively permeable to these ions and is given by\+:
+
+
+
+
+\begin{DoxyItemize}
+\item E\+\_\+r = resting membrane potential
+\item R = gas constant
+\item T = absolute temperature
+\item z = charge of that ion
+\item F = Faraday\textquotesingle{}s constant
+\item ln = natural logarithm
+\item \mbox{[}cation\mbox{]}out = concentration of the monovalent cation outside the cell
+\item \mbox{[}cation\mbox{]}in = concentration of the monovalent cation inside the cell
+\item P\+\_\+cation = relative permeability of the cell membrane to the monovalent cation in relation to an ion
+\item \mbox{[}anion\mbox{]}out = concentration of the monovalent anion outside the cell
+\item \mbox{[}anion\mbox{]}in = concentration of the monovalent anion inside the cell
+\item P\+\_\+anion = relative permeability of the cell membrane to the monovalent anion in relation to an ion
+\end{DoxyItemize}
+
+The {\bfseries resting membrane potential} is the electrical potential difference across an membrane not conducting {\bfseries action potentials}.
+
+\subsubsection*{Tools}
+
+\paragraph*{The resting potential for a human neuron}
+
+The resting potential and the ionic concentration of ions in a human neuron are displayed by running the following code\+:
+
+
+\begin{DoxyCode}
+python human\_neuron\_equilibrium.py
+\end{DoxyCode}
+
+
+\paragraph*{App}
+
+To calculate the equilibrium potential of an ion for a specific setting, run\+:
+
+
+\begin{DoxyCode}
+python goldman\_app.py
+\end{DoxyCode}
+ 

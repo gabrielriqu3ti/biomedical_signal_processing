@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Apr 20 15:01:58 2021
-
-@author: Gabriel H Riqueti
-"""
+##
+# @file nernst_app.py
+# @brief Contain a gui for the Nernst equation
+# @author Gabriel H Riqueti
+# @email gabrielhriqueti@gmail.com
+# @date 20/04/2021
+#
 
 from PySide2 import QtWidgets
 from PySide2.QtWidgets import QApplication
@@ -14,8 +16,14 @@ from biomedical_signal_processing import Nernst_equation
 
 
 class NernstEquationWidget(QtWidgets.QWidget):
+    ##
+    # @class NernstEquationWidget
+    # @brief provides GUI to Nernst equation
 
     def __init__(self):
+        """
+        Initialize instance
+        """
         super().__init__()
 
         self.label_ion_in = QtWidgets.QLabel('[Íon]in (mM):')
@@ -101,6 +109,9 @@ The equilibrium potential is the electrical potential difference that exactly ba
         self.label_potential_value.setText(str(equilibrium_potential) + ' mV')
 
     def UI(self):
+        """
+        Set the user interface
+        """
         self.button_about.setText('About')
         self.button_about.clicked.connect(self._show_info)
 

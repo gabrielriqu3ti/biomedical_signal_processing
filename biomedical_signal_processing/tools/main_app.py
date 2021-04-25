@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Apr 25 15:01:58 2021
-
-@author: Gabriel H Riqueti
-"""
+##
+# @file main_app.py
+# @brief Contain a GUI for the entire project
+# @author Gabriel H Riqueti
+# @email gabrielhriqueti@gmail.com
+# @date 25/04/2021
+#
 
 from PySide2 import QtWidgets
 from PySide2.QtWidgets import QApplication
@@ -13,8 +15,14 @@ from biomedical_signal_processing import NernstEquationWidget, GoldmanEquationWi
 
 
 class MainWindow(QtWidgets.QWidget):
+    ##
+    # @class MainWindow
+    # @brief provides GUI to all the functionalities of the library
 
     def __init__(self):
+        """
+        Initialize instance
+        """
         super().__init__()
 
         self._app_dict = {'Nernst equation' : NernstEquationWidget, 'Goldman equation' : GoldmanEquationWidget}
@@ -35,6 +43,9 @@ class MainWindow(QtWidgets.QWidget):
         self.app.show()
 
     def UI(self):
+        """
+        Set the user interface
+        """
         self.box_choose_app.addItems(list(self._app_dict.keys()))
 
         self.button_enter.setText('Enter')

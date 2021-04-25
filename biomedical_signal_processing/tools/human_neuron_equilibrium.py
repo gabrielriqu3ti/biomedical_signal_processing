@@ -1,9 +1,16 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Apr 21 14:09:51 2021
-
-@author: Gabriel H Riqueti
-"""
+##
+# @file human_neuron_equilibrium.py
+# @brief Calculates the equilibrium potential and the resting potential for a typical human neuron
+# @author Gabriel H Riqueti
+# @date 22/04/2021
+#
+#
+# @details The equilibrium potential and the resting potential are calculated for an excitable membrane at 37 Celsius
+#          with concentrations of potassium inside the cell of 100 mM, potassium outside the cell of 5 mM, sodium
+#          inside the cell of 15 mM, sodium outside the cell of 150 mM, cloride inside the cell of 13 mM and cloride
+#          outside the cell of 150 mM and relative permeabilities compared to the the permeability of potassium of
+#          sodium of 0.025 and cloride of 0.45.
 
 from biomedical_signal_processing import ABSOLUTE_TEMPERATURE_CELSIUS as T0
 from biomedical_signal_processing import Nernst_equation, Goldman_equation

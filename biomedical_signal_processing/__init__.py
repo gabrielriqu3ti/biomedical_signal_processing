@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Apr 20 14:59:39 2021
-
-@author: Gabriel H Riqueti
-"""
+##
+# @package biomedical_signal_processing
+# @brief Contain the application and interfaces related to the Nernst and Goldman equations
+# @author Gabriel H Riqueti
+# @email gabrielhriqueti@gmail.com
+# @date 20/04/2021
+#
 
 from .lib.constant import *
 from .lib.goldman_equation import Goldman_equation

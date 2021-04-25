@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Apr 20 15:01:58 2021
-
-@author: Gabriel H Riqueti
-"""
+##
+# @file goldman_app.py
+# @brief Contain a gui for the Goldman equation
+# @author Gabriel H Riqueti
+# @email gabrielhriqueti@gmail.com
+# @date 20/04/2021
+#
 
 from PySide2 import QtWidgets
 from PySide2.QtWidgets import QApplication
@@ -15,8 +17,14 @@ from biomedical_signal_processing import Goldman_equation
 
 
 class GoldmanEquationWidget(QtWidgets.QWidget):
+    ##
+    # @class GoldmanEquationWidget
+    # @brief provides GUI to the Goldman equation
 
     def __init__(self):
+        """
+        Initialize instance
+        """
         super().__init__()
 
         self.label_potassium_in = QtWidgets.QLabel('[K+]in (mM):')
@@ -141,6 +149,9 @@ The resting membrane potential is the electrical potential difference across an 
         self.label_potential_value.setText(str(resting_potential) + ' mV')
 
     def UI(self):
+        """
+        Set the user interface
+        """
         self.button_about.setText('About')
         self.button_about.clicked.connect(self._show_info)
 

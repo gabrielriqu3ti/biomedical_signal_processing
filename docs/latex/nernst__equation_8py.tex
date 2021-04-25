@@ -1,0 +1,50 @@
+\hypertarget{nernst__equation_8py}{}\section{biomedical\+\_\+signal\+\_\+processing/lib/nernst\+\_\+equation.py File Reference}
+\label{nernst__equation_8py}\index{biomedical\+\_\+signal\+\_\+processing/lib/nernst\+\_\+equation.\+py@{biomedical\+\_\+signal\+\_\+processing/lib/nernst\+\_\+equation.\+py}}
+
+
+Contain a function that calculates the equilibrium potential using the Goldman equation.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{nernst__equation_8py_a5dc02b1c2357fb9edb262e975861b0f3}{nernst\+\_\+equation.\+Nernst\+\_\+equation} (temperature, valence, ion\+\_\+in, ion\+\_\+out)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contain a function that calculates the equilibrium potential using the Goldman equation. 
+
+\begin{DoxyAuthor}{Author}
+Gabriel H Riqueti  \href{mailto:gabrielhriqueti@gmail.com}{\tt gabrielhriqueti@gmail.\+com} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+20/04/2021 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{nernst__equation_8py_file_a5dc02b1c2357fb9edb262e975861b0f3}\label{nernst__equation_8py_file_a5dc02b1c2357fb9edb262e975861b0f3}} 
+\index{nernst\+\_\+equation.\+py@{nernst\+\_\+equation.\+py}!Nernst\+\_\+equation@{Nernst\+\_\+equation}}
+\index{Nernst\+\_\+equation@{Nernst\+\_\+equation}!nernst\+\_\+equation.\+py@{nernst\+\_\+equation.\+py}}
+\subsubsection{\texorpdfstring{Nernst\+\_\+equation()}{Nernst\_equation()}}
+{\footnotesize\ttfamily def nernst\+\_\+equation.\+Nernst\+\_\+equation (\begin{DoxyParamCaption}\item[{}]{temperature,  }\item[{}]{valence,  }\item[{}]{ion\+\_\+in,  }\item[{}]{ion\+\_\+out }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Calculate the equilibrium potential for a specific ion
+
+Parameters
+----------
+temperature  : float
+               Temperature (Kelvin)
+valence      : int
+               Valence
+ion_in       : positive float
+               Ionic concentration inside the cell
+ion_out      : positive float
+               Ionic concentration outside the cell
+
+Returns
+-------
+e_ion        : float
+               Ionic equilibrium potential\end{DoxyVerb}
+ 
