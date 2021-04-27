@@ -13,7 +13,7 @@
 #          sodium of 0.025 and cloride of 0.45.
 
 from biomedical_signal_processing import ABSOLUTE_TEMPERATURE_CELSIUS as T0
-from biomedical_signal_processing import Nernst_equation, Goldman_equation
+from biomedical_signal_processing import nernst_equation, goldman_equation
 
 import numpy as np
 import pandas as pd
@@ -46,7 +46,7 @@ def main():
     perm_ions = pd.Series([K_perm, Na_perm, Cl_perm], index=ions)
 
     df = pd.DataFrame({'[Ion]in (mM)': ions_in, '[Ion]out (mM)': ions_out, 'Valence': z_ions, 'Relative Permeability to K+' : perm_ions})
-    df['E_r (mV)'] = 1000 * Nernst_equation(T - T0, df['Valence'], df['[Ion]in (mM)'], df['[Ion]out (mM)'])
+    df['E_r (mV)'] = 1000 * nernst_equation(T - T0, df['Valence'], df['[Ion]in (mM)'], df['[Ion]out (mM)'])
 
     mono_cations_in = np.array([K_in, Na_in], dtype=np.float32)
     mono_cations_out = np.array([K_out, Na_out], dtype=np.float32)
@@ -55,7 +55,7 @@ def main():
     mono_anions_out = np.array([Cl_out], dtype=np.float32)
     mono_anions_perm = np.array([Cl_perm], dtype=np.float32)
 
-    E_r = Goldman_equation(T - T0, mono_cations_in, mono_cations_out, mono_cations_perm, mono_anions_in, mono_anions_out, mono_anions_perm)
+    E_r = goldman_equation(T - T0, mono_cations_in, mono_cations_out, mono_cations_perm, mono_anions_in, mono_anions_out, mono_anions_perm)
 
     print(f'Approximate concentrations and ionic equilibrium potentials for a human neuron (at {T} Celsius):')
     print()

@@ -8,7 +8,7 @@
 #
 
 from .lib.constant import *
-from .lib.goldman_equation import Goldman_equation
-from .lib.nernst_equation import Nernst_equation
+from .lib.goldman_equation import goldman_equation
+from .lib.nernst_equation import nernst_equation
 from .tools.goldman_app import GoldmanEquationWidget
 from .tools.nernst_app import NernstEquationWidget

@@ -13,7 +13,7 @@ from biomedical_signal_processing import GAS_CONSTANT as R
 import numpy as np
 
 
-def Goldman_equation(temperature, mono_cations_in, mono_cations_out, mono_cations_perm, mono_anions_in, mono_anions_out, mono_anions_perm,):
+def goldman_equation(temperature, mono_cations_in, mono_cations_out, mono_cations_perm, mono_anions_in, mono_anions_out, mono_anions_perm,):
     """
     Calculate the resting membrane potential for a specific ion
 

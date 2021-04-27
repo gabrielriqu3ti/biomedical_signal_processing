@@ -12,7 +12,7 @@ from PySide2.QtWidgets import QApplication
 import sys
 
 from biomedical_signal_processing import ABSOLUTE_TEMPERATURE_CELSIUS as T0
-from biomedical_signal_processing import Nernst_equation
+from biomedical_signal_processing import nernst_equation
 
 
 class NernstEquationWidget(QtWidgets.QWidget):
@@ -104,7 +104,7 @@ The equilibrium potential is the electrical potential difference that exactly ba
             QtWidgets.QMessageBox.about(self, 'Error Message', error_msg)
             return -1
 
-        equilibrium_potential = 1000 * Nernst_equation(temperature - T0, valence, ion_in, ion_out)
+        equilibrium_potential = 1000 * nernst_equation(temperature - T0, valence, ion_in, ion_out)
 
         self.label_potential_value.setText(str(equilibrium_potential) + ' mV')
 

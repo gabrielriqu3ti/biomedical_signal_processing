@@ -12,7 +12,7 @@
 #
 
 from biomedical_signal_processing import ABSOLUTE_TEMPERATURE_CELSIUS as T0
-from biomedical_signal_processing import Nernst_equation
+from biomedical_signal_processing import nernst_equation
 
 import pandas as pd
 
@@ -40,7 +40,7 @@ def main():
     z_ions = pd.Series([z_K, z_Na, z_Cl], index=ions)
     
     df = pd.DataFrame({'[Ion]in (mM)' : ions_in, '[Ion]out (mM)' : ions_out, 'Valence' : z_ions})
-    df['E_r (mV)'] = 1000 * Nernst_equation(T - T0, df['Valence'], df['[Ion]in (mM)'], df['[Ion]out (mM)'])
+    df['E_r (mV)'] = 1000 * nernst_equation(T - T0, df['Valence'], df['[Ion]in (mM)'], df['[Ion]out (mM)'])
     
     print(f'Ionic Equilibrium Potentials at {T} Celsius')
     print()

@@ -13,7 +13,7 @@ import sys
 import numpy as np
 
 from biomedical_signal_processing import ABSOLUTE_TEMPERATURE_CELSIUS as T0
-from biomedical_signal_processing import Goldman_equation
+from biomedical_signal_processing import goldman_equation
 
 
 class GoldmanEquationWidget(QtWidgets.QWidget):
@@ -144,7 +144,7 @@ The resting membrane potential is the electrical potential difference across an 
         anions_out = np.array([Cl_out], dtype=np.float32)
         anions_perm = np.array([Cl_perm], dtype=np.float32)
 
-        resting_potential = 1000 * Goldman_equation(temperature - T0, cations_in, cations_out, cations_perm, anions_in, anions_out, anions_perm)
+        resting_potential = 1000 * goldman_equation(temperature - T0, cations_in, cations_out, cations_perm, anions_in, anions_out, anions_perm)
 
         self.label_potential_value.setText(str(resting_potential) + ' mV')
 

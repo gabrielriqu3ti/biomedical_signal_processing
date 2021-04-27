@@ -15,7 +15,7 @@ import numpy as np
 
 
 @np.vectorize
-def Nernst_equation(temperature, valence, ion_in, ion_out):
+def nernst_equation(temperature, valence, ion_in, ion_out):
     """
     Calculate the equilibrium potential for a specific ion
 
