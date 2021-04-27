@@ -20,11 +20,11 @@ class NernstEquationWidget(QtWidgets.QWidget):
     # @class NernstEquationWidget
     # @brief provides GUI to Nernst equation
 
-    def __init__(self):
+    def __init__(self, *args, **kwrds):
         """
         Initialize instance
         """
-        super().__init__()
+        super().__init__(*args, **kwrds)
 
         self.label_ion_in = QtWidgets.QLabel('[Íon]in (mM):')
         self.label_ion_out = QtWidgets.QLabel('[Íon]out (mM):')

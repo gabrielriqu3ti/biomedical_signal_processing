@@ -19,11 +19,11 @@ class BioWidget(QtWidgets.QWidget):
     # @class BioWidget
     # @brief provides GUI to all the functionalities of the library
 
-    def __init__(self):
+    def __init__(self, *args, **kwrds):
         """
         Initialize instance
         """
-        super().__init__()
+        super().__init__(*args, **kwrds)
 
         self._app_dict = {'Nernst equation' : NernstEquationWidget, 'Goldman equation' : GoldmanEquationWidget}
 

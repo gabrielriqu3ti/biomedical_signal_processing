@@ -12,17 +12,19 @@ from PySide2.QtWidgets import QApplication
 import sys
 import sympy
 
+from biomedical_signal_processing import PrettyEquationWidget
+
 
 class LaplaceTransformWidget(QtWidgets.QWidget):
     ##
     # @class LaplaceTransformWidget
     # @brief provides GUI to the Laplace Transform
 
-    def __init__(self):
+    def __init__(self, *args, **kwrds):
         """
         Initialize instance
         """
-        super().__init__()
+        super().__init__(*args, **kwrds)
 
         self.label_exp_time = QtWidgets.QLabel('f(t) = ')
         self.label_exp_state = QtWidgets.QLabel('F(s) = ')
@@ -44,9 +46,12 @@ class LaplaceTransformWidget(QtWidgets.QWidget):
 
         expr = sympy.integrate(f(t) * sympy.exp(-s * t), (t, 0, sympy.oo))
 
-        message = 'Laplace Transform \n\n L{f(t)} = \n\n' + str(sympy.pretty(expr, use_unicode=True))
+        self._msg = PrettyEquationWidget(title='Information', message='Laplace Transform',
+                                         var='L{f(t)} = ', func=expr)
+        self._msg.show()
 
-        QtWidgets.QMessageBox.about(self, 'Information', message)
+        # message = 'Laplace Transform \n\n L{f(t)} = \n\n' + sympy.pretty(expr, use_unicode=True)
+        # QtWidgets.QMessageBox.about(self, 'Information', message)
 
     def _calculate_laplace_transform(self):
         t, s = sympy.symbols('t, s')

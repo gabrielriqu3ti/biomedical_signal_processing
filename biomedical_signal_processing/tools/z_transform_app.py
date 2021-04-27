@@ -12,17 +12,19 @@ from PySide2.QtWidgets import QApplication
 import sys
 import sympy
 
+from biomedical_signal_processing import PrettyEquationWidget
+
 
 class ZTransformWidget(QtWidgets.QWidget):
     ##
     # @class ZTransformWidget
     # @brief provides GUI to the Z Transform
 
-    def __init__(self):
+    def __init__(self, *args, **kwrds):
         """
         Initialize instance
         """
-        super().__init__()
+        super().__init__(*args, **kwrds)
 
         self.label_exp_sample = QtWidgets.QLabel('f[n] = ')
         self.label_exp_state = QtWidgets.QLabel('F(z) = ')
@@ -45,21 +47,25 @@ class ZTransformWidget(QtWidgets.QWidget):
 
         expr = sympy.Sum(f(n) * sympy.exp(-z * n), (n, 0, sympy.oo))
 
-        message = 'Z Transform \n\n Z{f[n]} = \n\n' + str(sympy.pretty(expr, use_unicode=True))
+        self._msg = PrettyEquationWidget(title='Information', message='Z Transform',
+                                         var='Z{f[t]} = ', func=expr)
+        self._msg.show()
 
-        QtWidgets.QMessageBox.about(self, 'Information', message)
+        # message = 'Z Transform \n\n Z{f[n]} = \n\n' + sympy.pretty(expr, use_unicode=True)
+        # QtWidgets.QMessageBox.about(self, 'Information', message)
 
     def _calculate_z_transform(self):
         z = sympy.symbols('z')
-        n = sympy.Symbol('n', integer=True)
+        n = sympy.symbols('n')
 
         try:
             f = sympy.parsing.sympy_parser.parse_expr(self.line_exp_sample.text())
-            F = sympy.Sum(f * z**(-n), (n, 0, sympy.oo)).doit(noconds=True).args[0][0]
-        except  (ValueError, TypeError, SyntaxError):
+            F = sympy.Sum(f * z ** (-n), (n, 0, sympy.oo)).doit(noconds=True).args[0][0]
+        except (ValueError, TypeError, SyntaxError) as ex:
             error_msg = f'ValueError: invalid expression'
-            # print(error_msg)
+            print(ex, error_msg)
             QtWidgets.QMessageBox.about(self, 'Error message', error_msg)
+            return -1
 
         self.line_exp_state.setText(str(F))
 

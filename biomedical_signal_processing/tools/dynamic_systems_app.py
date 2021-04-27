@@ -19,11 +19,11 @@ class DynamicSystemWidget(QtWidgets.QWidget):
     # @class DynamicSystemWidget
     # @brief provides GUI to all the functionalities of the library
 
-    def __init__(self):
+    def __init__(self, *args, **kwrds):
         """
         Initialize instance
         """
-        super().__init__()
+        super().__init__(*args, **kwrds)
 
         self._app_dict = {'Laplace Transform' : LaplaceTransformWidget, 'Z Transform' : ZTransformWidget}
 

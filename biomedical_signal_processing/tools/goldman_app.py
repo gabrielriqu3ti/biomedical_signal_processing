@@ -21,11 +21,11 @@ class GoldmanEquationWidget(QtWidgets.QWidget):
     # @class GoldmanEquationWidget
     # @brief provides GUI to the Goldman equation
 
-    def __init__(self):
+    def __init__(self, *args, **kwrds):
         """
         Initialize instance
         """
-        super().__init__()
+        super().__init__(*args, **kwrds)
 
         self.label_potassium_in = QtWidgets.QLabel('[K+]in (mM):')
         self.label_potassium_out = QtWidgets.QLabel('[K+]out (mM):')
