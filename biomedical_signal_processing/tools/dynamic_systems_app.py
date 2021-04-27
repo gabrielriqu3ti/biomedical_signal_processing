@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##
-# @file main_app.py
-# @brief Contain a GUI for the entire project
+# @file dynamic_systems_app.py
+# @brief Contain a GUI for the dynamic systems project
 # @author Gabriel H Riqueti
 # @email gabrielhriqueti@gmail.com
 # @date 25/04/2021
@@ -11,12 +11,12 @@ from PySide2 import QtWidgets
 from PySide2.QtWidgets import QApplication
 import sys
 
-from biomedical_signal_processing import NernstEquationWidget, GoldmanEquationWidget
+from biomedical_signal_processing import LaplaceTransformWidget, ZTransformWidget
 
 
-class MainWindow(QtWidgets.QWidget):
+class DynamicSystemWidget(QtWidgets.QWidget):
     ##
-    # @class MainWindow
+    # @class DynamicSystemWidget
     # @brief provides GUI to all the functionalities of the library
 
     def __init__(self):
@@ -25,7 +25,7 @@ class MainWindow(QtWidgets.QWidget):
         """
         super().__init__()
 
-        self._app_dict = {'Nernst equation' : NernstEquationWidget, 'Goldman equation' : GoldmanEquationWidget}
+        self._app_dict = {'Laplace Transform' : LaplaceTransformWidget, 'Z Transform' : ZTransformWidget}
 
         self.label_choose_app = QtWidgets.QLabel('Choose an application:')
 
@@ -57,14 +57,14 @@ class MainWindow(QtWidgets.QWidget):
 
         self.setLayout(self.grid)
         self.setGeometry(400, 300, 400, 60)
-        self.setWindowTitle('Application Menu')
+        self.setWindowTitle('Dynamic Systems Menu')
 
         self.show()
 
 
 def main():
     app = QApplication(sys.argv)
-    win = MainWindow()
+    win = DynamicSystemWidget()
 
     screen = app.primaryScreen()
     win.move((screen.size().width() - win.width()) // 2, (screen.size().height() - win.height()) // 2)
