@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_5fapp_2epy',['main_app.py',['../main__app_8py.html',1,'']]]
+  ['func_5fplot_5fapp_2epy',['func_plot_app.py',['../func__plot__app_8py.html',1,'']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ex_5fnernst_5fequation_2epy',['ex_nernst_equation.py',['../ex__nernst__equation_8py.html',1,'']]]
+  ['dynamic_5fsystems_5fapp_2epy',['dynamic_systems_app.py',['../dynamic__systems__app_8py.html',1,'']]],
+  ['dynamicsystemwidget',['DynamicSystemWidget',['../classdynamic__systems__app_1_1DynamicSystemWidget.html',1,'dynamic_systems_app.DynamicSystemWidget'],['../classDynamicSystemWidget.html',1,'DynamicSystemWidget']]]
 ];

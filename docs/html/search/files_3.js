@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['human_5fneuron_5fequilibrium_2epy',['human_neuron_equilibrium.py',['../human__neuron__equilibrium_8py.html',1,'']]]
+  ['ex_5fnernst_5fequation_2epy',['ex_nernst_equation.py',['../ex__nernst__equation_8py.html',1,'']]]
 ];

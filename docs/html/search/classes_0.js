@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['goldmanequationwidget',['GoldmanEquationWidget',['../classgoldman__app_1_1GoldmanEquationWidget.html',1,'goldman_app.GoldmanEquationWidget'],['../classGoldmanEquationWidget.html',1,'GoldmanEquationWidget']]]
+  ['biowidget',['BioWidget',['../classbio__app_1_1BioWidget.html',1,'bio_app.BioWidget'],['../classBioWidget.html',1,'BioWidget']]]
 ];

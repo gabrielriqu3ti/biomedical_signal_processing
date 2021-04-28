@@ -1,0 +1,62 @@
+\hypertarget{classbio__app_1_1BioWidget}{}\section{bio\+\_\+app.\+Bio\+Widget Class Reference}
+\label{classbio__app_1_1BioWidget}\index{bio\+\_\+app.\+Bio\+Widget@{bio\+\_\+app.\+Bio\+Widget}}
+
+
+Inheritance diagram for bio\+\_\+app.\+Bio\+Widget\+:
+% FIG 0
+
+
+Collaboration diagram for bio\+\_\+app.\+Bio\+Widget\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classbio__app_1_1BioWidget_a8c66afbae2d48e0ebd0944663e7ce729}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, args, kwrds)
+\item 
+def \hyperlink{classbio__app_1_1BioWidget_a330cf3cf37afa6013211893736620e76}{UI} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classbio__app_1_1BioWidget_a60fd0d72575771e6c40197fe6c3976df}\label{classbio__app_1_1BioWidget_a60fd0d72575771e6c40197fe6c3976df}} 
+{\bfseries label\+\_\+choose\+\_\+app}
+\item 
+\mbox{\Hypertarget{classbio__app_1_1BioWidget_ae86db4b439b71c409ee2c694f5c39ef0}\label{classbio__app_1_1BioWidget_ae86db4b439b71c409ee2c694f5c39ef0}} 
+{\bfseries box\+\_\+choose\+\_\+app}
+\item 
+\mbox{\Hypertarget{classbio__app_1_1BioWidget_af177d3d804ecc6ecf790aa26d575bccc}\label{classbio__app_1_1BioWidget_af177d3d804ecc6ecf790aa26d575bccc}} 
+{\bfseries button\+\_\+enter}
+\item 
+\mbox{\Hypertarget{classbio__app_1_1BioWidget_a52872736738c9109c09db4c408276c2e}\label{classbio__app_1_1BioWidget_a52872736738c9109c09db4c408276c2e}} 
+{\bfseries grid}
+\item 
+\mbox{\Hypertarget{classbio__app_1_1BioWidget_ad0c07de1d6faefac655414078791b6b1}\label{classbio__app_1_1BioWidget_ad0c07de1d6faefac655414078791b6b1}} 
+{\bfseries app}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbio__app_1_1BioWidget_a8c66afbae2d48e0ebd0944663e7ce729}\label{classbio__app_1_1BioWidget_a8c66afbae2d48e0ebd0944663e7ce729}} 
+\index{bio\+\_\+app\+::\+Bio\+Widget@{bio\+\_\+app\+::\+Bio\+Widget}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!bio\+\_\+app\+::\+Bio\+Widget@{bio\+\_\+app\+::\+Bio\+Widget}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def bio\+\_\+app.\+Bio\+Widget.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{args,  }\item[{}]{kwrds }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize instance
+\end{DoxyVerb}
+ 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classbio__app_1_1BioWidget_a330cf3cf37afa6013211893736620e76}\label{classbio__app_1_1BioWidget_a330cf3cf37afa6013211893736620e76}} 
+\index{bio\+\_\+app\+::\+Bio\+Widget@{bio\+\_\+app\+::\+Bio\+Widget}!UI@{UI}}
+\index{UI@{UI}!bio\+\_\+app\+::\+Bio\+Widget@{bio\+\_\+app\+::\+Bio\+Widget}}
+\subsubsection{\texorpdfstring{U\+I()}{UI()}}
+{\footnotesize\ttfamily def bio\+\_\+app.\+Bio\+Widget.\+UI (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Set the user interface
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+biomedical\+\_\+signal\+\_\+processing/tools/\hyperlink{bio__app_8py}{bio\+\_\+app.\+py}\end{DoxyCompactItemize}
