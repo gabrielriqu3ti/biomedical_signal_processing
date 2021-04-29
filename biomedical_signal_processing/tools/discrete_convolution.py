@@ -73,46 +73,6 @@ class MPLWidget(QtWidgets.QWidget):
 
         self.mpl_canvas.draw()
 
-    def _plot_convolution(self):
-        n = sympy.symbols('n')
-        try:
-            n_min = float(self.line_var_min.text())
-            n_max = float(self.line_var_max.text())
-            if n_min >= n_max:
-                raise ValueError
-        except ValueError:
-            error_msg = 'ValueError: the interval must be constituted of float numbers with the left one being ' \
-                        'smaller than the right one '
-            # print(error_msg)
-            QtWidgets.QMessageBox.about(self, 'Error message', error_msg)
-            return -1
-        try:
-            x = sympy.parsing.sympy_parser.parse_expr(self.line_func_x.text())
-            h = sympy.parsing.sympy_parser.parse_expr(self.line_func_h.text())
-        except (ValueError, TypeError, SyntaxError):
-            error_msg = f'ValueError: invalid expression'
-            # print(error_msg)
-            QtWidgets.QMessageBox.about(self, 'Error message', error_msg)
-            return -1
-
-        n_np = np.arange(- 10 * np.abs(n_min), 10 * np.abs(n_max) + 1)
-
-        x_py = sympy.lambdify(n, x, "numpy")
-        x_np = x_py(n_np)
-        h_py = sympy.lambdify(n, h, "numpy")
-        h_np = h_py(n_np)
-
-        if isinstance(x_np, (int, float)):
-            x_np *= np.ones(shape=n_np.shape)
-        if isinstance(h_np, (int, float)):
-            h_np *= np.ones(shape=n_np.shape)
-            
-        y_np = np.convolve(x_np, h_np, 'same')
-
-        self.mpl_canvas.axes.stem(n_np[(n_np >= n_min) & (n_np <= n_max)], y_np[(n_np >= n_min) & (n_np <= n_max)], label='(h*x)[n]', markerfmt='C3o')
-        self.mpl_canvas.axes.legend()
-        self.mpl_canvas.draw()
-
     def _plot(self, var):
         n = sympy.symbols('n')
         line_func = {'x' : self.line_func_x, 'h' : self.line_func_h, 'y' : self.line_func_y}
@@ -137,13 +97,53 @@ class MPLWidget(QtWidgets.QWidget):
             QtWidgets.QMessageBox.about(self, 'Error message', error_msg)
             return -1
 
-        n_np = np.arange(- 10 * np.abs(n_min), 10 * np.abs(n_max) + 1)
+        n_np = np.arange(- 10 * np.max([np.abs(n_min), np.abs(n_max)]), 10 * np.max([np.abs(n_min), np.abs(n_max)]) + 1)
         f_py = sympy.lambdify(n, f, "numpy")
         f_np = f_py(n_np)
         if isinstance(f_np, (int, float)):
             f_np *= np.ones(shape=n_np.shape)
 
         self.mpl_canvas.axes.stem(n_np[(n_np >= n_min) & (n_np <= n_max)], f_np[(n_np >= n_min) & (n_np <= n_max)], label=sympy.pretty(f), markerfmt=marker_color[var])
+        self.mpl_canvas.axes.legend()
+        self.mpl_canvas.draw()
+
+    def _plot_convolution(self):
+        n = sympy.symbols('n')
+        try:
+            n_min = float(self.line_var_min.text())
+            n_max = float(self.line_var_max.text())
+            if n_min >= n_max:
+                raise ValueError
+        except ValueError:
+            error_msg = 'ValueError: the interval must be constituted of float numbers with the left one being ' \
+                        'smaller than the right one '
+            # print(error_msg)
+            QtWidgets.QMessageBox.about(self, 'Error message', error_msg)
+            return -1
+        try:
+            x = sympy.parsing.sympy_parser.parse_expr(self.line_func_x.text())
+            h = sympy.parsing.sympy_parser.parse_expr(self.line_func_h.text())
+        except (ValueError, TypeError, SyntaxError):
+            error_msg = f'ValueError: invalid expression'
+            # print(error_msg)
+            QtWidgets.QMessageBox.about(self, 'Error message', error_msg)
+            return -1
+
+        n_np = np.arange(- 10 * np.max([np.abs(n_min), np.abs(n_max)]), 10 * np.max([np.abs(n_min), np.abs(n_max)]) + 1)
+
+        x_py = sympy.lambdify(n, x, "numpy")
+        x_np = x_py(n_np)
+        h_py = sympy.lambdify(n, h, "numpy")
+        h_np = h_py(n_np)
+
+        if isinstance(x_np, (int, float)):
+            x_np *= np.ones(shape=n_np.shape)
+        if isinstance(h_np, (int, float)):
+            h_np *= np.ones(shape=n_np.shape)
+            
+        y_np = np.convolve(x_np, h_np, 'same')
+
+        self.mpl_canvas.axes.stem(n_np[(n_np >= n_min) & (n_np <= n_max)], y_np[(n_np >= n_min) & (n_np <= n_max)], label='(h*x)[n]', markerfmt='C3o')
         self.mpl_canvas.axes.legend()
         self.mpl_canvas.draw()
 
@@ -162,7 +162,7 @@ class MPLWidget(QtWidgets.QWidget):
         """
         self.button_clear.setText('Clear')
         self.button_clear.clicked.connect(self._clear)
-        self.button_plot_convolution.setText('Convolve (h * x)[n]')
+        self.button_plot_convolution.setText('Plot convolution (h * x)[n]')
         self.button_plot_convolution.clicked.connect(self._plot_convolution)
         self.button_plot_x.setText('Plot x')
         self.button_plot_x.clicked.connect(self._plot_x)
@@ -171,8 +171,8 @@ class MPLWidget(QtWidgets.QWidget):
         self.button_plot_y.setText('Plot y')
         self.button_plot_y.clicked.connect(self._plot_y)
 
-        self.mpl_canvas.axes.set_xlabel('t')
-        self.mpl_canvas.axes.set_ylabel('f(t)')
+        self.mpl_canvas.axes.set_xlabel('n')
+        self.mpl_canvas.axes.set_ylabel('f[n]')
 
         self.grid.addWidget(self.label_var, 0, 0)
         self.grid.addWidget(self.line_var_min, 0, 1)
@@ -198,8 +198,8 @@ class MPLWidget(QtWidgets.QWidget):
         self.grid.addWidget(self.mpl_canvas, 5, 0, 1, 5)
 
         self.setLayout(self.grid)
-        self.setGeometry(400, 300, 800, 700)
-        self.setWindowTitle('Function display')
+        self.setGeometry(200, 100, 1600, 900)
+        self.setWindowTitle('Discrete Convolution of Signals')
 
         self.show()
 
