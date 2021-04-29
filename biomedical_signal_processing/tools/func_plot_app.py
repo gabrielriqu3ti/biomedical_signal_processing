@@ -15,8 +15,6 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
 import sympy
 
-from biomedical_signal_processing import LaplaceTransformWidget, ZTransformWidget
-
 
 class MPLCanvas(FigureCanvasQTAgg):
     ##
