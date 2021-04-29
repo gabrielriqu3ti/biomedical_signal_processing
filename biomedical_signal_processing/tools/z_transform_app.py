@@ -28,9 +28,9 @@ class ZTransformWidget(QtWidgets.QWidget):
 
         self.label_exp_sample = QtWidgets.QLabel('f[n] = ')
         self.label_exp_state = QtWidgets.QLabel('F(z) = ')
+        self.label_exp_state_val = QtWidgets.QLabel('')
 
         self.line_exp_sample = QtWidgets.QLineEdit()
-        self.line_exp_state = QtWidgets.QLineEdit()
 
         self.button_calculate_z_transform = QtWidgets.QPushButton()
 #        self.button_calculate_inverse_z_transform = QtWidgets.QPushButton()
@@ -60,14 +60,18 @@ class ZTransformWidget(QtWidgets.QWidget):
 
         try:
             f = sympy.parsing.sympy_parser.parse_expr(self.line_exp_sample.text())
-            F = sympy.Sum(f * z ** (-n), (n, 0, sympy.oo)).doit(noconds=True).args[0][0]
+            F = sympy.Sum(f * z ** (-n), (n, 0, sympy.oo)).doit(noconds=True)
+
+            while isinstance(F, (sympy.Piecewise, sympy.functions.elementary.piecewise.ExprCondPair)):
+                F = F.args[0]
+
         except (ValueError, TypeError, SyntaxError) as ex:
             error_msg = f'ValueError: invalid expression'
             print(ex, error_msg)
             QtWidgets.QMessageBox.about(self, 'Error message', error_msg)
             return -1
 
-        self.line_exp_state.setText(str(F))
+        self.label_exp_state_val.setText(str(F))
 
 
     """ Not implemented
@@ -76,7 +80,7 @@ class ZTransformWidget(QtWidgets.QWidget):
             n = sympy.Symbol('n', integer=True)
     
             try:
-                F = sympy.parsing.sympy_parser.parse_expr(self.line_exp_state.text())
+                F = sympy.parsing.sympy_parser.parse_expr(self.label_exp_state_val.text())
                 f = sympy.Sum(F * z**(-n), (n, -sympy.oo, sympy.oo)).doit(noconds=True)
             except ValueError:
                 error_msg = f'ValueError: invalid expression'
@@ -101,7 +105,7 @@ class ZTransformWidget(QtWidgets.QWidget):
         self.grid.addWidget(self.label_exp_sample, 0, 0)
         self.grid.addWidget(self.line_exp_sample, 0, 1, 1, 2)
         self.grid.addWidget(self.label_exp_state, 1, 0)
-        self.grid.addWidget(self.line_exp_state, 1, 1, 1, 2)
+        self.grid.addWidget(self.label_exp_state_val, 1, 1, 1, 2)
         self.grid.addWidget(self.button_about, 2, 0)
         self.grid.addWidget(self.button_calculate_z_transform, 2, 1)
 #        self.grid.addWidget(self.button_calculate_inverse_z_transform, 2, 2)

@@ -23,7 +23,7 @@ class MPLCanvas(FigureCanvasQTAgg):
     # @class FigureCanvasQTAgg
     # @brief provides GUI to all the functionalities of the library
 
-    def __init__(self, parent=None, width=5, height=4, dpi=300, *args, **kwrds):
+    def __init__(self, parent=None, width=5, height=4, dpi=100, *args, **kwrds):
         """
         Initialize instance
         """
@@ -61,6 +61,10 @@ class MPLWidget(QtWidgets.QWidget):
 
     def _clear(self):
         self.mpl_canvas.axes.cla()
+
+        self.mpl_canvas.axes.set_xlabel('t')
+        self.mpl_canvas.axes.set_ylabel('f(t)')
+
         self.mpl_canvas.draw()
 
     def _plot(self):
@@ -85,7 +89,7 @@ class MPLWidget(QtWidgets.QWidget):
             QtWidgets.QMessageBox.about(self, 'Error message', error_msg)
             return -1
 
-        t_np = np.linspace(t_min, t_max, 100)
+        t_np = np.linspace(t_min, t_max, 1000)
         f_py = sympy.lambdify(t, f, "numpy")
         f_np = f_py(t_np)
         if isinstance(f_np, (int, float)):
@@ -103,6 +107,9 @@ class MPLWidget(QtWidgets.QWidget):
         self.button_clear.clicked.connect(self._clear)
         self.button_plot.setText('Plot')
         self.button_plot.clicked.connect(self._plot)
+
+        self.mpl_canvas.axes.set_xlabel('t')
+        self.mpl_canvas.axes.set_ylabel('f(t)')
 
         self.grid.addWidget(self.label_var, 0, 0)
         self.grid.addWidget(self.line_var_min, 0, 1)
