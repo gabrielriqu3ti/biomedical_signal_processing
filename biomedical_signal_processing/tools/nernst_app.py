@@ -11,6 +11,7 @@ from PySide2 import QtWidgets
 from PySide2.QtWidgets import QApplication
 import sys
 
+from biomedical_signal_processing import PATH_NERNST_EQUATION_INFO
 from biomedical_signal_processing import ABSOLUTE_TEMPERATURE_CELSIUS as T0
 from biomedical_signal_processing import nernst_equation
 
@@ -48,26 +49,10 @@ class NernstEquationWidget(QtWidgets.QWidget):
         self.UI()
         
     def _show_info(self):
-        message = '''Nernst Equation
-        
-The Nernst Equation allows us to calculate the equilibrium potential for a given ion separated by a phospholipid membrane with ion channels selectively permeable to that ion and is given by:
-
-E_ion = (RT/(zF)) ln([ion]out / [ion]in)
-
-where:
-
-- E_ion = ionic equilibrium potential
-- R = gas constant
-- T = absolute temperature
-- z = charge of that ion
-- F = Faraday's constant
-- ln = natural logarithm
-- [ion]out = concentration of the ion outside the cell
-- [ion]in = concentration of the ion inside the cell
-
-The equilibrium potential is the electrical potential difference that exactly balances an ionic concentration gradient.
-        '''
-
+        try:
+            message = open(PATH_NERNST_EQUATION_INFO).read()
+        except FileNotFoundError:
+            message = 'Information not available!' + '\nLooking for: ' + PATH_NERNST_EQUATION_INFO.as_posix()
         QtWidgets.QMessageBox.about(self, 'Information', message)
 
     def _calculate_equilibrium_potential(self):

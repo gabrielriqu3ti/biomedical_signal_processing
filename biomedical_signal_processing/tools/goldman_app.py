@@ -12,6 +12,7 @@ from PySide2.QtWidgets import QApplication
 import sys
 import numpy as np
 
+from biomedical_signal_processing import PATH_GOLDMAN_EQUATION_INFO
 from biomedical_signal_processing import ABSOLUTE_TEMPERATURE_CELSIUS as T0
 from biomedical_signal_processing import goldman_equation
 
@@ -62,32 +63,10 @@ class GoldmanEquationWidget(QtWidgets.QWidget):
         self.UI()
 
     def _show_info(self):
-        message = '''Goldman Equation
-
-The Goldman Equation allows us to calculate the resting membrane potential for a given set of monovalent ions separated by a phospholipid membrane with ion channels selectively permeable to these ions and is given by:
-
-E_r = (R * T / F) * ln((P_K+ * [K+]out + P_Na+ * [Na+]out + P_Cl- * [Cl-]in) / (P_K+ * [K+]in + P_Na+ * [Na+]in + P_Cl- * [Cl-]out))
-
-- E_r = resting membrane potential
-- R = gas constant
-- T = absolute temperature
-- z = charge of that ion
-- F = Faraday's constant
-- ln = natural logarithm
-- [K+]out = concentration of potassium outside the cell
-- [Na+]out = concentration of sodium outside the cell
-- [Cl-]out = concentration of cloride outside the cell
-- [K+]in = concentration of potassium inside the cell
-- [Na+]in = concentration of sodium inside the cell
-- [Cl-]in = concentration of cloride inside the cell
-- P_K+ = relative permeability of the cell membrane to potassium in relation to potassium
-- P_Na+ = relative permeability of the cell membrane to sodium in relation to potassium
-- P_Cl- = relative permeability of the cell membrane to cloride in relation to potassium
-- P_anion = relative permeability of the cell membrane to the monovalent anion in relation to an ion
-
-The resting membrane potential is the electrical potential difference across an membrane not conducting action potentials.
-        '''
-
+        try:
+            message = open(PATH_GOLDMAN_EQUATION_INFO).read()
+        except FileNotFoundError:
+            message = 'Information not available!' + '\nLooking for: ' + PATH_GOLDMAN_EQUATION_INFO.as_posix()
         QtWidgets.QMessageBox.about(self, 'Information', message)
 
     def _calculate_resting_potential(self):
