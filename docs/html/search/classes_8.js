@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ztransformwidget',['ZTransformWidget',['../classZTransformWidget.html',1,'ZTransformWidget'],['../classz__transform__app_1_1ZTransformWidget.html',1,'z_transform_app.ZTransformWidget']]]
+  ['testgoldmanequation',['TestGoldmanEquation',['../classtest__equations_1_1TestGoldmanEquation.html',1,'test_equations']]],
+  ['testnernstequation',['TestNernstEquation',['../classtest__equations_1_1TestNernstEquation.html',1,'test_equations']]]
 ];

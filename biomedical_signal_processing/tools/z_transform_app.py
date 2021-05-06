@@ -20,7 +20,7 @@ class ZTransformWidget(QtWidgets.QWidget):
     # @class ZTransformWidget
     # @brief provides GUI to the Z Transform
 
-    def __init__(self, *args, **kwrds):
+    def __init__(self, screen=None, *args, **kwrds):
         """
         Initialize instance
         """
@@ -37,6 +37,8 @@ class ZTransformWidget(QtWidgets.QWidget):
         self.button_about = QtWidgets.QPushButton()
 
         self.grid = QtWidgets.QGridLayout()
+
+        self.screen = screen
 
         self.UI()
 
@@ -111,7 +113,14 @@ class ZTransformWidget(QtWidgets.QWidget):
 #        self.grid.addWidget(self.button_calculate_inverse_z_transform, 2, 2)
 
         self.setLayout(self.grid)
-        self.setGeometry(400, 300, 400, 150)
+
+        if self.screen is None:
+            self.setGeometry(400, 300, 400, 150)
+        else:
+            self.setGeometry(1, 1, 400, 150)
+            self.move((self.screen.size().width() - self.width()) // 2,
+                      (self.screen.size().height() - self.height()) // 2)
+
         self.setWindowTitle('Z Transform')
 
         self.show()
@@ -119,10 +128,9 @@ class ZTransformWidget(QtWidgets.QWidget):
 
 def main():
     app = QApplication(sys.argv)
-    win = ZTransformWidget()
-
     screen = app.primaryScreen()
-    win.move((screen.size().width() - win.width()) // 2, (screen.size().height() - win.height()) // 2)
+
+    win = ZTransformWidget(screen)
 
     win.show()
     sys.exit(app.exec_())

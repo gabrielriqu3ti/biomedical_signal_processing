@@ -30,12 +30,12 @@ class MPLCanvas(FigureCanvasQTAgg):
         super(MPLCanvas, self).__init__(fig)
 
 
-class MPLWidget(QtWidgets.QWidget):
+class FunctionPlotWidget(QtWidgets.QWidget):
     ##
-    # @class MPLWidget
+    # @class FunctionPlotWidget
     # @brief provides GUI to all the functionalities of the library
 
-    def __init__(self, *args, **kwrds):
+    def __init__(self, screen=None, *args, **kwrds):
         """
         Initialize instance
         """
@@ -51,9 +51,12 @@ class MPLWidget(QtWidgets.QWidget):
         self.mpl_canvas = MPLCanvas(width=5, heigth=4, dpi=100)
 
         self.button_clear = QtWidgets.QPushButton()
+        self.button_legend = QtWidgets.QPushButton()
         self.button_plot = QtWidgets.QPushButton()
 
         self.grid = QtWidgets.QGridLayout()
+
+        self.screen = screen
 
         self.UI()
 
@@ -62,6 +65,16 @@ class MPLWidget(QtWidgets.QWidget):
 
         self.mpl_canvas.axes.set_xlabel('t')
         self.mpl_canvas.axes.set_ylabel('f(t)')
+        self.button_legend.setText('Legend on')
+
+        self.mpl_canvas.draw()
+
+    def _legend(self):
+        legend = self.mpl_canvas.axes.get_legend()
+        if legend is not None:
+            visibility = self.mpl_canvas.axes.get_legend().get_visible()
+            self.button_legend.setText('Legend ' + ('on' if visibility else 'off'))
+            self.mpl_canvas.axes.get_legend().set_visible(not visibility)
 
         self.mpl_canvas.draw()
 
@@ -94,7 +107,15 @@ class MPLWidget(QtWidgets.QWidget):
             f_np *= np.ones(shape=t_np.shape)
 
         self.mpl_canvas.axes.plot(t_np, f_np, label=sympy.pretty(f))
-        self.mpl_canvas.axes.legend()
+
+        legend = self.mpl_canvas.axes.get_legend()
+        if legend is not None:
+            visibility = self.mpl_canvas.axes.get_legend().get_visible()
+        else:
+            visibility = False
+
+        self.mpl_canvas.axes.legend().set_visible(visibility)
+
         self.mpl_canvas.draw()
 
     def UI(self):
@@ -103,6 +124,8 @@ class MPLWidget(QtWidgets.QWidget):
         """
         self.button_clear.setText('Clear')
         self.button_clear.clicked.connect(self._clear)
+        self.button_legend.setText('Legend on')
+        self.button_legend.clicked.connect(self._legend)
         self.button_plot.setText('Plot')
         self.button_plot.clicked.connect(self._plot)
 
@@ -120,11 +143,19 @@ class MPLWidget(QtWidgets.QWidget):
 
         self.grid.addWidget(self.button_clear, 2, 1)
         self.grid.addWidget(self.button_plot, 2, 3)
+        self.grid.addWidget(self.button_legend, 3, 3)
 
-        self.grid.addWidget(self.mpl_canvas, 3, 0, 1, 4)
+        self.grid.addWidget(self.mpl_canvas, 4, 0, 1, 4)
 
         self.setLayout(self.grid)
-        self.setGeometry(400, 300, 800, 700)
+
+        if self.screen is None:
+            self.setGeometry(400, 300, 800, 700)
+        else:
+            self.setGeometry(1, 1, 800, 700)
+            self.move((self.screen.size().width() - self.width()) // 2,
+                      (self.screen.size().height() - self.height()) // 2)
+
         self.setWindowTitle('Function display')
 
         self.show()
@@ -132,10 +163,9 @@ class MPLWidget(QtWidgets.QWidget):
 
 def main():
     app = QApplication(sys.argv)
-    win = MPLWidget()
-
     screen = app.primaryScreen()
-    win.move((screen.size().width() - win.width()) // 2, (screen.size().height() - win.height()) // 2)
+
+    win = FunctionPlotWidget(screen)
 
     win.show()
     sys.exit(app.exec_())

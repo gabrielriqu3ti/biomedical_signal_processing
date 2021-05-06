@@ -43,6 +43,15 @@ def goldman_equation(temperature, mono_cations_in, mono_cations_out, mono_cation
 
     if (mono_cations_in <= 0).any() or (mono_cations_out <= 0).any() or (mono_anions_in <= 0).any() or (mono_anions_out <= 0).any():
         raise ValueError('The ionic concentrations must have positive values')
+    if temperature < 0:
+        raise ValueError('temperature must have non-negative values')
+
+    if (np.sum(mono_cations_in * mono_cations_perm) + np.sum(mono_anions_out * mono_anions_perm) == 0
+            and (np.sum(mono_cations_out * mono_cations_perm) + np.sum(mono_anions_in * mono_anions_perm)) == 0):
+        return 0 * (R * temperature / F) * (
+                (np.sum(mono_cations_out * mono_cations_perm) + np.sum(mono_anions_in * mono_anions_perm)) *
+                (np.sum(mono_cations_in * mono_cations_perm) + np.sum(mono_anions_out * mono_anions_perm))
+        )
 
     return (R * temperature / F) * np.log(
         (np.sum(mono_cations_out * mono_cations_perm) + np.sum(mono_anions_in * mono_anions_perm)) /

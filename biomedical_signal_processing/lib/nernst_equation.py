@@ -36,9 +36,10 @@ def nernst_equation(temperature, valence, ion_in, ion_out):
                    Ionic equilibrium potential
 
     """
-
     if ion_in <= 0 or ion_out <= 0:
         raise ValueError('ion_in and ion_out must have positive values')
+    if temperature < 0:
+        raise ValueError('temperature must have non-negative values')
     if valence == 0:
         return 0 * valence * temperature * ion_in * ion_out
 

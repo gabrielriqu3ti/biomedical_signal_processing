@@ -11,7 +11,7 @@ Collaboration diagram for bio\+\_\+app.\+Bio\+Widget\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classbio__app_1_1BioWidget_a8c66afbae2d48e0ebd0944663e7ce729}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, args, kwrds)
+def \hyperlink{classbio__app_1_1BioWidget_aeefe645788f7209309a4f081316d3c1a}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, screen=None, args, kwrds)
 \item 
 def \hyperlink{classbio__app_1_1BioWidget_a330cf3cf37afa6013211893736620e76}{UI} (self)
 \end{DoxyCompactItemize}
@@ -30,17 +30,20 @@ def \hyperlink{classbio__app_1_1BioWidget_a330cf3cf37afa6013211893736620e76}{UI}
 \mbox{\Hypertarget{classbio__app_1_1BioWidget_a52872736738c9109c09db4c408276c2e}\label{classbio__app_1_1BioWidget_a52872736738c9109c09db4c408276c2e}} 
 {\bfseries grid}
 \item 
+\mbox{\Hypertarget{classbio__app_1_1BioWidget_a6cf67ae27c87c5d98d24c523acb58b30}\label{classbio__app_1_1BioWidget_a6cf67ae27c87c5d98d24c523acb58b30}} 
+{\bfseries screen}
+\item 
 \mbox{\Hypertarget{classbio__app_1_1BioWidget_ad0c07de1d6faefac655414078791b6b1}\label{classbio__app_1_1BioWidget_ad0c07de1d6faefac655414078791b6b1}} 
 {\bfseries app}
 \end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classbio__app_1_1BioWidget_a8c66afbae2d48e0ebd0944663e7ce729}\label{classbio__app_1_1BioWidget_a8c66afbae2d48e0ebd0944663e7ce729}} 
+\mbox{\Hypertarget{classbio__app_1_1BioWidget_aeefe645788f7209309a4f081316d3c1a}\label{classbio__app_1_1BioWidget_aeefe645788f7209309a4f081316d3c1a}} 
 \index{bio\+\_\+app\+::\+Bio\+Widget@{bio\+\_\+app\+::\+Bio\+Widget}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
 \index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!bio\+\_\+app\+::\+Bio\+Widget@{bio\+\_\+app\+::\+Bio\+Widget}}
 \subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily def bio\+\_\+app.\+Bio\+Widget.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{args,  }\item[{}]{kwrds }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def bio\+\_\+app.\+Bio\+Widget.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{screen = {\ttfamily None},  }\item[{}]{args,  }\item[{}]{kwrds }\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Initialize instance
 \end{DoxyVerb}

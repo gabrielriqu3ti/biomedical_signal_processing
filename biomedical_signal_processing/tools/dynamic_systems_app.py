@@ -12,6 +12,7 @@ from PySide2.QtWidgets import QApplication
 import sys
 
 from biomedical_signal_processing import LaplaceTransformWidget, ZTransformWidget
+from biomedical_signal_processing import FunctionPlotWidget, DiscreteConvWidget
 
 
 class DynamicSystemWidget(QtWidgets.QWidget):
@@ -19,13 +20,18 @@ class DynamicSystemWidget(QtWidgets.QWidget):
     # @class DynamicSystemWidget
     # @brief provides GUI to all the functionalities of the library
 
-    def __init__(self, *args, **kwrds):
+    def __init__(self, screen=None, *args, **kwrds):
         """
         Initialize instance
         """
         super().__init__(*args, **kwrds)
 
-        self._app_dict = {'Laplace Transform' : LaplaceTransformWidget, 'Z Transform' : ZTransformWidget}
+        self._app_dict = {
+            'Laplace Transform': LaplaceTransformWidget,
+            'Z Transform': ZTransformWidget,
+            'Function Plot': FunctionPlotWidget,
+            'Discrete Convolution': DiscreteConvWidget,
+        }
 
         self.label_choose_app = QtWidgets.QLabel('Choose an application:')
 
@@ -35,10 +41,12 @@ class DynamicSystemWidget(QtWidgets.QWidget):
 
         self.grid = QtWidgets.QGridLayout()
 
+        self.screen = screen
+
         self.UI()
 
     def _enter_app(self):
-        self.app = self._app_dict[self.box_choose_app.currentText()]()
+        self.app = self._app_dict[self.box_choose_app.currentText()](screen=self.screen)
 
         self.app.show()
 
@@ -56,7 +64,14 @@ class DynamicSystemWidget(QtWidgets.QWidget):
         self.grid.addWidget(self.button_enter, 1, 2)
 
         self.setLayout(self.grid)
-        self.setGeometry(400, 300, 400, 60)
+
+        if self.screen is None:
+            self.setGeometry(400, 300, 400, 60)
+        else:
+            self.setGeometry(1, 1, 400, 60)
+            self.move((self.screen.size().width() - self.width()) // 2,
+                      (self.screen.size().height() - self.height()) // 2)
+
         self.setWindowTitle('Dynamic Systems Menu')
 
         self.show()
@@ -64,10 +79,9 @@ class DynamicSystemWidget(QtWidgets.QWidget):
 
 def main():
     app = QApplication(sys.argv)
-    win = DynamicSystemWidget()
-
     screen = app.primaryScreen()
-    win.move((screen.size().width() - win.width()) // 2, (screen.size().height() - win.height()) // 2)
+
+    win = DynamicSystemWidget(screen)
 
     win.show()
     sys.exit(app.exec_())

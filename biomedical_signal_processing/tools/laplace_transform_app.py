@@ -20,7 +20,7 @@ class LaplaceTransformWidget(QtWidgets.QWidget):
     # @class LaplaceTransformWidget
     # @brief provides GUI to the Laplace Transform
 
-    def __init__(self, *args, **kwrds):
+    def __init__(self, screen=None, *args, **kwrds):
         """
         Initialize instance
         """
@@ -37,6 +37,8 @@ class LaplaceTransformWidget(QtWidgets.QWidget):
         self.button_about = QtWidgets.QPushButton()
 
         self.grid = QtWidgets.QGridLayout()
+
+        self.screen = screen
 
         self.UI()
 
@@ -102,7 +104,12 @@ class LaplaceTransformWidget(QtWidgets.QWidget):
         self.grid.addWidget(self.button_calculate_inverse_laplace_transform, 2, 3, 1, 2)
 
         self.setLayout(self.grid)
-        self.setGeometry(400, 300, 500, 150)
+        if self.screen is None:
+            self.setGeometry(400, 300, 500, 150)
+        else:
+            self.setGeometry(1, 1, 500, 150)
+            self.move((self.screen.size().width() - self.width()) // 2,
+                      (self.screen.size().height() - self.height()) // 2)
         self.setWindowTitle('Laplace Transform')
 
         self.show()
@@ -110,10 +117,9 @@ class LaplaceTransformWidget(QtWidgets.QWidget):
 
 def main():
     app = QApplication(sys.argv)
-    win = LaplaceTransformWidget()
-
     screen = app.primaryScreen()
-    win.move((screen.size().width() - win.width()) // 2, (screen.size().height() - win.height()) // 2)
+
+    win = LaplaceTransformWidget(screen)
 
     win.show()
     sys.exit(app.exec_())

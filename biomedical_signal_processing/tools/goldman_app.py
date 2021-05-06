@@ -21,7 +21,7 @@ class GoldmanEquationWidget(QtWidgets.QWidget):
     # @class GoldmanEquationWidget
     # @brief provides GUI to the Goldman equation
 
-    def __init__(self, *args, **kwrds):
+    def __init__(self, screen=None, *args, **kwrds):
         """
         Initialize instance
         """
@@ -56,6 +56,8 @@ class GoldmanEquationWidget(QtWidgets.QWidget):
         self.button_calculate = QtWidgets.QPushButton()
 
         self.grid = QtWidgets.QGridLayout()
+
+        self.screen = screen
 
         self.UI()
 
@@ -189,7 +191,14 @@ The resting membrane potential is the electrical potential difference across an 
         self.grid.addWidget(self.label_potential_value, 9, 2)
 
         self.setLayout(self.grid)
-        self.setGeometry(400, 300, 700, 300)
+
+        if self.screen is None:
+            self.setGeometry(400, 300, 700, 300)
+        else:
+            self.setGeometry(1, 1, 700, 300)
+            self.move((self.screen.size().width() - self.width()) // 2,
+                      (self.screen.size().height() - self.height()) // 2)
+
         self.setWindowTitle('Goldman Equation')
 
         self.show()
@@ -197,10 +206,9 @@ The resting membrane potential is the electrical potential difference across an 
 
 def main():
     app = QApplication(sys.argv)
-    win = GoldmanEquationWidget()
-
     screen = app.primaryScreen()
-    win.move((screen.size().width() - win.width()) // 2, (screen.size().height() - win.height()) // 2)
+
+    win = GoldmanEquationWidget(screen)
 
     win.show()
     sys.exit(app.exec_())

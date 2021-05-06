@@ -20,7 +20,7 @@ class NernstEquationWidget(QtWidgets.QWidget):
     # @class NernstEquationWidget
     # @brief provides GUI to Nernst equation
 
-    def __init__(self, *args, **kwrds):
+    def __init__(self, screen=None, *args, **kwrds):
         """
         Initialize instance
         """
@@ -42,6 +42,8 @@ class NernstEquationWidget(QtWidgets.QWidget):
         self.button_about = QtWidgets.QPushButton()
 
         self.grid = QtWidgets.QGridLayout()
+
+        self.screen = screen
 
         self.UI()
         
@@ -134,7 +136,14 @@ The equilibrium potential is the electrical potential difference that exactly ba
         self.grid.addWidget(self.label_potential_value, 7, 1)
 
         self.setLayout(self.grid)
-        self.setGeometry(400, 300, 350, 200)
+
+        if self.screen is None:
+            self.setGeometry(400, 300, 350, 200)
+        else:
+            self.setGeometry(1, 1, 350, 200)
+            self.move((self.screen.size().width() - self.width()) // 2,
+                      (self.screen.size().height() - self.height()) // 2)
+
         self.setWindowTitle('Nernst Equation')
 
         self.show()
@@ -142,10 +151,9 @@ The equilibrium potential is the electrical potential difference that exactly ba
 
 def main():
     app = QApplication(sys.argv)
-    win = NernstEquationWidget()
-
     screen = app.primaryScreen()
-    win.move((screen.size().width() - win.width()) // 2, (screen.size().height() - win.height()) // 2)
+
+    win = NernstEquationWidget(screen)
 
     win.show()
     sys.exit(app.exec_())

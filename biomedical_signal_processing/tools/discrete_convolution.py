@@ -30,12 +30,12 @@ class MPLCanvas(FigureCanvasQTAgg):
         super(MPLCanvas, self).__init__(fig)
 
 
-class MPLWidget(QtWidgets.QWidget):
+class DiscreteConvWidget(QtWidgets.QWidget):
     ##
-    # @class MPLWidget
+    # @class DiscreteConvWidget
     # @brief provides GUI to all the functionalities of the library
 
-    def __init__(self, *args, **kwrds):
+    def __init__(self, screen=None, *args, **kwrds):
         """
         Initialize instance
         """
@@ -63,6 +63,8 @@ class MPLWidget(QtWidgets.QWidget):
         self.button_plot_y = QtWidgets.QPushButton()
 
         self.grid = QtWidgets.QGridLayout()
+
+        self.screen = screen
 
         self.UI()
 
@@ -228,7 +230,14 @@ class MPLWidget(QtWidgets.QWidget):
         self.grid.addWidget(self.mpl_canvas, 5, 0, 1, 5)
 
         self.setLayout(self.grid)
-        self.setGeometry(200, 100, 1600, 900)
+
+        if self.screen is None:
+            self.setGeometry(400, 300, 1600, 900)
+        else:
+            self.setGeometry(1, 1, 1600, 900)
+            self.move((self.screen.size().width() - self.width()) // 2,
+                      (self.screen.size().height() - self.height()) // 2)
+
         self.setWindowTitle('Discrete Convolution of Signals')
 
         self.show()
@@ -236,10 +245,9 @@ class MPLWidget(QtWidgets.QWidget):
 
 def main():
     app = QApplication(sys.argv)
-    win = MPLWidget()
-
     screen = app.primaryScreen()
-    win.move((screen.size().width() - win.width()) // 2, (screen.size().height() - win.height()) // 2)
+
+    win = DiscreteConvWidget(screen)
 
     win.show()
     sys.exit(app.exec_())
