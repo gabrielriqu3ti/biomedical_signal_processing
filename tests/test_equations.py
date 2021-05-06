@@ -344,7 +344,7 @@ class TestGoldmanEquation:
                                            mono_anions_in, mono_anions_out, mono_anions_perm),
                           - 65 * 1e-3, atol=1e-3)
 
-    def test_goldman_equation_0_cations_0_ions(self):
+    def test_goldman_equation_0_ions(self):
 
         temperature = 37 - ABSOLUTE_TEMPERATURE_CELSIUS
         mono_cations_in = np.array([])
