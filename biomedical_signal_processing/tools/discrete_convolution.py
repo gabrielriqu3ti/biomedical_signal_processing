@@ -57,6 +57,7 @@ class MPLWidget(QtWidgets.QWidget):
 
         self.button_clear = QtWidgets.QPushButton()
         self.button_plot_convolution = QtWidgets.QPushButton()
+        self.button_legend = QtWidgets.QPushButton()
         self.button_plot_x = QtWidgets.QPushButton()
         self.button_plot_h = QtWidgets.QPushButton()
         self.button_plot_y = QtWidgets.QPushButton()
@@ -70,6 +71,16 @@ class MPLWidget(QtWidgets.QWidget):
 
         self.mpl_canvas.axes.set_xlabel('n')
         self.mpl_canvas.axes.set_ylabel('f[n]')
+        self.button_legend.setText('Legend on')
+
+        self.mpl_canvas.draw()
+
+    def _legend(self):
+        legend = self.mpl_canvas.axes.get_legend()
+        if legend is not None:
+            visibility = self.mpl_canvas.axes.get_legend().get_visible()
+            self.button_legend.setText('Legend ' + ('on' if visibility else 'off'))
+            self.mpl_canvas.axes.get_legend().set_visible(not visibility)
 
         self.mpl_canvas.draw()
 
@@ -104,7 +115,15 @@ class MPLWidget(QtWidgets.QWidget):
             f_np *= np.ones(shape=n_np.shape)
 
         self.mpl_canvas.axes.stem(n_np[(n_np >= n_min) & (n_np <= n_max)], f_np[(n_np >= n_min) & (n_np <= n_max)], label=sympy.pretty(f), markerfmt=marker_color[var])
-        self.mpl_canvas.axes.legend()
+
+        legend = self.mpl_canvas.axes.get_legend()
+        if legend is not None:
+            visibility = self.mpl_canvas.axes.get_legend().get_visible()
+        else:
+            visibility = False
+
+        self.mpl_canvas.axes.legend().set_visible(visibility)
+
         self.mpl_canvas.draw()
 
     def _plot_convolution(self):
@@ -144,7 +163,15 @@ class MPLWidget(QtWidgets.QWidget):
         y_np = np.convolve(x_np, h_np, 'same')
 
         self.mpl_canvas.axes.stem(n_np[(n_np >= n_min) & (n_np <= n_max)], y_np[(n_np >= n_min) & (n_np <= n_max)], label='(h*x)[n]', markerfmt='C3o')
-        self.mpl_canvas.axes.legend()
+
+        legend = self.mpl_canvas.axes.get_legend()
+        if legend is not None:
+            visibility = self.mpl_canvas.axes.get_legend().get_visible()
+        else:
+            visibility = False
+
+        self.mpl_canvas.axes.legend().set_visible(visibility)
+
         self.mpl_canvas.draw()
 
     def _plot_x(self):
@@ -162,6 +189,8 @@ class MPLWidget(QtWidgets.QWidget):
         """
         self.button_clear.setText('Clear')
         self.button_clear.clicked.connect(self._clear)
+        self.button_legend.setText('Legend on')
+        self.button_legend.clicked.connect(self._legend)
         self.button_plot_convolution.setText('Plot convolution (h * x)[n]')
         self.button_plot_convolution.clicked.connect(self._plot_convolution)
         self.button_plot_x.setText('Plot x')
@@ -194,6 +223,7 @@ class MPLWidget(QtWidgets.QWidget):
 
         self.grid.addWidget(self.button_clear, 4, 1)
         self.grid.addWidget(self.button_plot_convolution, 4, 3)
+        self.grid.addWidget(self.button_legend, 4, 4)
 
         self.grid.addWidget(self.mpl_canvas, 5, 0, 1, 5)
 
