@@ -1,4 +1,4 @@
-% PTC3456 - Processamento de Sinais Biológicos 
+%% PTC3456 - Processamento de Sinais Biológicos 
 % Aula 2
 
 n = -10:10;
